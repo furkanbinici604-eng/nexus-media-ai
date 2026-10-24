@@ -1,0 +1,22 @@
+name: Nexus Media AI Auto Factory
+
+on:
+  schedule:
+    - cron: '0 9,15 * * *'
+  workflow_dispatch:
+
+jobs:
+  run-factory:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Run Nexus Factory Engine
+        run: |
+          python main.py
